@@ -1,0 +1,3 @@
+<?php
+namespace ChadPriddle\AppliedApi\Resources; use Illuminate\Http\Client\Response;
+class Vendors extends Resource { public function list(array $f=[]):Response{return $this->client->get('/epic/vendor/v1/vendors',$this->q($f));} public function search(string $v,array $f=[]):Response{return $this->list(array_merge(['search'=>$v],$f));} public function get($id):Response{return $this->client->get('/epic/vendor/v1/vendors/'.rawurlencode($id));} }
