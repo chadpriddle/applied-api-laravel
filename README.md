@@ -24,3 +24,4 @@ $attachments = Applied::epic()->attachments()->list(['account'=>$accountId,'embe
 Applied::epic()->attachments()->update($attachmentId,['description'=>'Updated']);
 ```
 Authentication is OAuth 2.0 client credentials using the Applied token endpoint. Tokens are cached and a 401 causes one token refresh/retry. API methods return Laravel HTTP Response objects.
+
