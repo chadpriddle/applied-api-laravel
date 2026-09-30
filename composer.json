@@ -1,0 +1,5 @@
+{
+"name":"chadpriddle/applied-api-laravel","description":"Laravel Composer wrapper for Applied Systems APIs","type":"library","license":"MIT",
+"require":{"php":"^8.2","illuminate/cache":"^11|^12|^13","illuminate/http":"^11|^12|^13","illuminate/support":"^11|^12|^13"},
+"autoload":{"psr-4":{"ChadPriddle\\AppliedApi\\":"src/"}},
+"extra":{"laravel":{"providers":["ChadPriddle\\AppliedApi\\AppliedServiceProvider"],"aliases":{"Applied":"ChadPriddle\\AppliedApi\\Facades\\Applied"}}}}
