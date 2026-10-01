@@ -466,3 +466,31 @@ vendor/bin/phpunit
 MIT License.
 
 Copyright (c) 2026 Chad Priddle.
+
+## Simplified Client Results
+
+The Applied SDK v1 clients endpoint returns its data inside an `Envelope` / `Body` / `Get_ClientResponse` / `Get_ClientResult` wrapper. The package hides that wrapper for the normal `Clients::list()` call.
+
+Instead of doing this:
+
+```php
+$response = Applied::sdk()->clients()->list();
+$data = $response->json();
+$clients = data_get($data, 'Envelope.Body.Get_ClientResponse.Get_ClientResult.Clients.Client', []);
+```
+
+you can now simply do:
+
+```php
+$clients = Applied::sdk()->clients()->list([
+    'ClientName' => 'Smith',
+    'ClientStatus' => 'All',
+    'PageNumber' => 0,
+]);
+
+foreach ($clients as $client) {
+    echo $client['AccountName'];
+}
+```
+
+`list()`, `findById()`, and `findByName()` return a plain PHP array of client records. If you need the original Laravel HTTP response and complete Applied envelope, use `response()`.
